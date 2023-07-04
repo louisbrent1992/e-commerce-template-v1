@@ -25,7 +25,8 @@ dist-ssr
 *.sw?
 *env.d.ts
 *.env.local
-.env
+*.env
+
 
 
 
