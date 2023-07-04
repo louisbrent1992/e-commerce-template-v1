@@ -7,7 +7,7 @@
 		"server": "nodemon src/server.ts",
 		"start": "node dist/server.js",
 		"clean": "npx rimraf dist",
-		"build": "npm run clean && npx tsc",
+		"build": "npm run clean && npx -p typescript tsc",
 		"ts.check": "tsc --project tsconfig.json",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
