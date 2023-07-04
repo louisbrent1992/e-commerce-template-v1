@@ -6,8 +6,8 @@
 	"scripts": {
 		"server": "nodemon src/server.ts",
 		"start": "node dist/server.js",
-		"build": "npx rimraf dist && npx tsc",
-		"rimraf": "./node_modules/rimraf/bin.js",
+		"build": "rimraf dist && tsc",
+		"rimraf": "rimraf",
 		"push": "git push origin main",
 		"deploy": "npm run build",
 		"ts.check": "tsc --project tsconfig.json",
