@@ -22,7 +22,8 @@
 		"jsonwebtoken": "^9.0.0",
 		"mongoose": "^7.3.1",
 		"rimraf": "^5.0.1",
-		"stripe": "^12.11.0"
+		"stripe": "^12.11.0",
+		"typescript": "^5.1.6"
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.0",
