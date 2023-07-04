@@ -33,15 +33,15 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">E-Commerce-Website-V1</h3>
 
   <p align="center">
-    project_description
+    E-commerce website template designed to provide a solid foundation for building your own online store. With a modern and responsive design, it offers a range of essential features and functionalities to create a seamless shopping experience for your customers.
     <br />
     <a href="https://github.com/louisbrent1992/e-commerce-template-v1"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/louisbrent1992/e-commerce-template-v1">View Demo</a>
+    <a href="https://e-commerce-app-v1.onrender.com">View Demo</a>
     ·
     <a href="https://github.com/louisbrent1992/e-commerce-template-v1/issues">Report Bug</a>
     ·
@@ -67,7 +67,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#key-features">Key Features</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -79,20 +79,35 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Whether you're starting a new online store or revamping an existing one, this e-commerce website template provides a solid foundation to kickstart your project. Customize and extend it according to your specific business needs, and deliver an exceptional shopping experience to your customers.
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `louisbrent1992`, `e-commerce-template-v1`, `twitter_handle`, `louis-brent`, `gmail`, `louisbrent1992`, `project_title`, `project_description`
+[![Screenshot 1][product-screenshot]](https://e-commerce-app-v1.onrender.com)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- KEY FEATURES -->
+
+## Key Features
+
+- **Product Catalog:** Showcase your products with detailed descriptions, high-quality images, and pricing information.
+- **Search Functionality:** Help your customers easily find the products they're looking for with a powerful search feature.
+- **Shopping Cart:** Enable customers to add items to their cart, review their selections, and proceed to secure checkout.
+- **User Accounts:** Allow customers to create accounts, manage their orders, and save their preferences for a personalized experience.
+- **Secure Checkout:** Ensure a secure and encrypted checkout process with support for various payment options.
+- **Order Management:** Efficiently manage and process orders, track shipments, and communicate with customers.
+- **Customer Reviews and Ratings:** Let customers share their feedback and ratings to build trust and aid purchasing decisions.
+- **Discounts and Promotions:** Run promotional campaigns, offer discounts, and reward customer loyalty.
+- **Responsive Design:** Ensure a seamless shopping experience across different devices and screen sizes.
+- **Customer Support:** Provide excellent customer support through multiple channels, ensuring customer satisfaction.
+
+See the [open issues](https://github.com/louisbrent1992/e-commerce-template-v1/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-- [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
 - [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
-- [![Svelte][Svelte.dev]][Svelte-url]
-- [![Laravel][Laravel.com]][Laravel-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
 
@@ -102,32 +117,38 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/louisbrent1992/e-commerce-template-v1.git
    ```
-3. Install NPM packages
+2. Install all NPM packages and local .env files
    ```sh
-   npm install
+   npm run install-all
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
+3. Update .env in Frontend directory
+   ```sh
+   REACT_APP_BASE_URL='your-server-url'
+   REACT_APP_STRIPE_PUBLIC_KEY='your-stripe-public-key'
+   NODE_ENV='development'
+   ```
+4. Update .env in Backend directory
+   ```sh
+   PORT="your-port-number"
+   DATABASE_URI="your-mongoDB-database-url"
+   JWT_SECRET="your-jwt-secret"
+   PASS_SEC="your-password-secret"
+   STRIPE_SECRET_KEY="your-stripe-secret-key"
+   NODE_ENV="development"
+   ```
+5. Start Backend server
+   ```sh
+   cd Backend
+   npm run server
+   ```
+6. Start Frontend server
+   ```sh
+   cd Frontend
+   npm run start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -139,19 +160,6 @@ This is an example of how to list things you need to use the software and how to
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/louisbrent1992/e-commerce-template-v1/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,7 +192,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - louisbrent1992@gmail.com
+Louis Brent - [@louisbrent13](https://twitter.com/louisbrent13) - louisbrent1992@gmail.com
 
 Project Link: [https://github.com/louisbrent1992/e-commerce-template-v1](https://github.com/louisbrent1992/e-commerce-template-v1)
 
@@ -194,9 +202,7 @@ Project Link: [https://github.com/louisbrent1992/e-commerce-template-v1](https:/
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [othneildrew](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,18 +222,10 @@ Project Link: [https://github.com/louisbrent1992/e-commerce-template-v1](https:/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/louis-brent
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
