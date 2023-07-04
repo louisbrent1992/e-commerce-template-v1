@@ -7,7 +7,7 @@
 		"server": "nodemon src/server.ts",
 		"start": "node dist/server.js",
 		"delete-build": "npx rimraf dist",
-		"build": "npm run delete-build && tsc",
+		"build": "npm run delete-build && npx tsc",
 		"ts.check": "tsc --project tsconfig.json",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
