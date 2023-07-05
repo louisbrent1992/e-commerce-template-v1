@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
 import { mobile } from "../responsive";
@@ -38,7 +38,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
 	height: 100%;
 	display: flex;
-	transition: all 1.5s ease;
+	transition: all 2s ease;
 	transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
@@ -46,10 +46,7 @@ const Slide = styled.div`
 	position: relative;
 	width: 100vw;
 	height: 100vh;
-	background: linear-gradient(
-		rgba(150, 255, 255, 0.1),
-		rgba(150, 255, 255, 0.1)
-	);
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 `;
 
 const AspectRatioBox = styled.div`
@@ -67,6 +64,7 @@ const AspectRatioBox = styled.div`
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: top;
 	}
 `;
 
@@ -108,7 +106,7 @@ const Desc = styled.p`
 	font-weight: 500;
 	letter-spacing: 3px;
 	color: white;
-	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	text-align: right;
 
 	${mobile({
@@ -140,6 +138,7 @@ const Button = styled.button`
 
 const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
+
 	const handleClick = (direction) => {
 		if (direction === "left") {
 			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : sliderItems.length - 1);
@@ -147,6 +146,18 @@ const Slider = () => {
 			setSlideIndex(slideIndex < sliderItems.length - 1 ? slideIndex + 1 : 0);
 		}
 	};
+
+	// Automatically transition to the next slide after 10 seconds
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setSlideIndex((prevIndex) =>
+				prevIndex < sliderItems.length - 1 ? prevIndex + 1 : 0
+			);
+		}, 10000);
+
+		// Cleanup the interval on component unmount
+		return () => clearInterval(interval);
+	}, []);
 
 	return (
 		<Container>
