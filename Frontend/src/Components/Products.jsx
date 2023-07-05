@@ -56,7 +56,7 @@ const Products = ({ cat, filters, sort }) => {
 	}, [sort]);
 
 	return (
-		products.length > 1 && (
+		products.length > 0 && (
 			<Container>
 				{cat
 					? filteredProducts?.map((item) => (
