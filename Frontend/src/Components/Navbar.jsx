@@ -9,11 +9,10 @@ import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
 
 const Container = styled.div`
-	position: absolute;
+	position: ${(props) => props.PosAbsolute && "absolute"};
 	padding-inline: 20px;
-	top: 0;
+	top: ${(props) => props.PosAbsolute && "0"};
 	width: 100%;
-
 	z-index: 9;
 `;
 
@@ -33,8 +32,8 @@ const Left = styled.div`
 const Logo = styled.h1`
 	color: white;
 	text-shadow: ${(props) =>
-		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.5)" : null};
-
+		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
+	text-transform: uppercase;
 	color: ${(props) => props.color};
 	${mobile({ fontSize: "24px" })}
 
@@ -65,7 +64,7 @@ const MenuItem = styled.span`
 const NavLink = styled(Link)`
 	color: ${(props) => props.color};
 	text-shadow: ${(props) =>
-		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.5)" : null};
+		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
 
 	&:hover {
 		color: #e6b800;
@@ -82,7 +81,7 @@ const Cart = styled(ShoppingCartOutlined)`
 	}
 `;
 
-const Navbar = ({ LinkColor, LinkShadow }) => {
+const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 	const quantity = useSelector((state) => state.cart.quantity);
 	const currentUser = useSelector((state) => state.user.currentUser);
 
@@ -97,12 +96,12 @@ const Navbar = ({ LinkColor, LinkShadow }) => {
 	};
 
 	return (
-		<Container>
+		<Container PosAbsolute={PosAbsolute}>
 			<Wrapper>
 				<Left>
 					<NavLink to="/">
 						<Logo color={LinkColor} shadow={LinkShadow}>
-							{"RE-DESIGN"}
+							RE-DESIGN
 						</Logo>
 					</NavLink>
 				</Left>
