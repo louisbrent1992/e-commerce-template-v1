@@ -1,4 +1,5 @@
 import {
+	CopyrightOutlined,
 	Facebook,
 	Instagram,
 	MailOutline,
@@ -12,6 +13,12 @@ import { mobile, tablet } from "../responsive";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding-inline: 20px;
+`;
+
+const Wrapper = styled.div`
 	display: flex;
 	align-items: start;
 	padding-block: 20px;
@@ -105,8 +112,15 @@ const Text = styled.p`
 	margin-left: 1rem;
 `;
 
+const CopyrightContainer = styled.div`
+	display: flex;
+	align-items: center;
+	margin-right: 1rem;
+`;
+const CopyrightIcon = styled(CopyrightOutlined)``;
+
 const Payment = styled.img`
-	width: 50%;
+	object-fit: contain;
 `;
 
 const Link = styled.a`
@@ -118,17 +132,81 @@ const Link = styled.a`
 	${tablet({ fontSize: "24px" })}
 `;
 
+const Bottom = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+`;
+
 const Footer = () => {
 	const currentUser = useSelector((state) => state.user.currentUser);
 	return (
 		<Container>
-			<Left>
-				<Logo>Re-Design</Logo>
-				<Desc>
-					There are many variations of passages of Lorem Ipsum available, but
-					the majority have suffered alteration in some form, by injected
-					humour, or randomised words which don’t look even slightly believable.
-				</Desc>
+			<Wrapper>
+				<Left>
+					<Logo>Re-Design</Logo>
+					<Desc>
+						At Re-Design, we're passionate about delivering excellence. Explore
+						our diverse range of products designed to enhance your lifestyle.
+						With attention to detail and customer satisfaction as our top
+						priorities, we guarantee a remarkable shopping experience. Start
+						shopping today and find your new favorite look!
+					</Desc>
+				</Left>
+
+				<Center>
+					<Title>Useful Links</Title>
+					<List>
+						<Link href={"/"}>Home</Link>
+
+						<Link href="/cart">Cart</Link>
+
+						<Link href="/products/women">
+							{mobile ? "Women" : "Shop Women"}
+						</Link>
+
+						<Link href="/products/men">{mobile ? "Men" : "Shop Men"}</Link>
+
+						<Link href="/products/accessories">Accessories</Link>
+
+						<Link href={currentUser ? "/:username/account_overview" : "/login"}>
+							{currentUser ? "My Account" : "Login"}
+						</Link>
+
+						<Link href="/cart/wishlist">Wishlist</Link>
+
+						<Link href="/support">Support</Link>
+
+						<Link href="">Terms</Link>
+					</List>
+				</Center>
+
+				<Right>
+					<Title>Contact</Title>
+					<ContentWrapper>
+						<ContactContainer>
+							<ContactItem>
+								<Room />
+								<Text>1111 W First St, Los Angeles, California 90044</Text>
+							</ContactItem>
+							<ContactItem>
+								<Phone />
+								<Text>+1 562 555 5555</Text>
+							</ContactItem>
+							<ContactItem>
+								<MailOutline />
+								<Text>
+									contact@
+									{"RE-DESIGN"}
+									.dev
+								</Text>
+							</ContactItem>
+						</ContactContainer>
+					</ContentWrapper>
+				</Right>
+			</Wrapper>
+
+			<Bottom>
 				<SocialContainer>
 					<SocialIcon href="" color="3B5999">
 						<Facebook />
@@ -143,58 +221,14 @@ const Footer = () => {
 						<Pinterest />
 					</SocialIcon>
 				</SocialContainer>
-			</Left>
-
-			<Center>
-				<Title>Useful Links</Title>
-				<List>
-					<Link href={"/"}>Home</Link>
-
-					<Link href="/cart">Cart</Link>
-
-					<Link href="/products/women">{mobile ? "Women" : "Shop Women"}</Link>
-
-					<Link href="/products/men">{mobile ? "Men" : "Shop Men"}</Link>
-
-					<Link href="/products/accessories">Accessories</Link>
-
-					<Link href={currentUser ? "/:username/account_overview" : "/login"}>
-						{currentUser ? "My Account" : "Login"}
+				<CopyrightContainer>
+					<CopyrightIcon style={{ fontSize: "small" }} />
+					<Link style={{ width: "100%", fontSize: "16px" }} src="">
+						2023 Advent Hub Innovations llc.
 					</Link>
-
-					<Link href="/cart/wishlist">Wishlist</Link>
-
-					<Link href="/support">Support</Link>
-
-					<Link href="">Terms</Link>
-				</List>
-			</Center>
-
-			<Right>
-				<Title>Contact</Title>
-				<ContentWrapper>
-					<ContactContainer>
-						<ContactItem>
-							<Room />
-							<Text>1111 W First St, Los Angeles, California 90044</Text>
-						</ContactItem>
-						<ContactItem>
-							<Phone />
-							<Text>+1 562 555 5555</Text>
-						</ContactItem>
-						<ContactItem>
-							<MailOutline />
-							<Text>
-								contact@
-								{"RE-DESIGN"}
-								.dev
-							</Text>
-						</ContactItem>
-					</ContactContainer>
-
-					<Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-				</ContentWrapper>
-			</Right>
+				</CopyrightContainer>
+				<Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+			</Bottom>
 		</Container>
 	);
 };
