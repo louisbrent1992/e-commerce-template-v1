@@ -21,10 +21,10 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-	max-width: 50%;
+	min-width: 40%;
+	max-width: 55%;
 	padding: 20px;
 	background-color: white;
-	${mobile({ maxWidth: "75%" })}
 `;
 
 const Logo = styled.a`
@@ -57,10 +57,12 @@ const Input = styled.input`
 	min-width: 40%;
 	margin: 10px 0;
 	padding: 10px;
+
+	${mobile({ maxWidth: "57%" })}
 `;
 
 const Button = styled.button`
-	width: 40%;
+	max-width: 40%;
 	border: none;
 	padding: 15px 20px;
 	background-color: teal;
@@ -71,6 +73,8 @@ const Button = styled.button`
 		color: green;
 		cursor: not-allowed;
 	}
+
+	${mobile({ maxWidth: "57%" })}
 `;
 
 const Anchor = styled.a`
