@@ -8,22 +8,32 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { categories } from "../data";
 
-const Container = styled.div``;
+const Container = styled.div`
+	overflow-x: hidden;
+`;
 
 const BackgroundContainer = styled.div`
+	position: relative;
 	width: 100vw;
 	height: 100vh;
-	background: linear-gradient(
-			rgba(150, 255, 255, 0.1),
-			rgba(150, 255, 255, 0.1)
-		),
-		url(${(props) => props.bg});
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 	background-repeat: no-repeat;
 	background-size: cover;
+
+	img {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 `;
+
+const BackgroundImage = styled.img``;
 
 const Title = styled.h2`
 	margin: 20px;
+	text-transform: uppercase;
 `;
 
 const FilterContainer = styled.div`
@@ -55,6 +65,8 @@ const ProductList = () => {
 	const [filters, setFilters] = useState({});
 	const [sort, setSort] = useState("newest");
 
+	const backgroundImage = categories.find((item) => item.cat === cat)?.bg;
+
 	const handleFilters = (e) => {
 		const value = e.target.value;
 
@@ -66,13 +78,12 @@ const ProductList = () => {
 
 	return (
 		<Container>
-			<BackgroundContainer
-				bg={categories.find((item) => item.cat === cat && item.bg)?.bg}
-			>
-				<Navbar LinkColor="white" LinkShadow />
+			<BackgroundContainer>
+				<Navbar LinkColor="white" LinkShadow="true" />
+				<BackgroundImage src={backgroundImage} alt={cat} />
 			</BackgroundContainer>
 
-			<Title>{cat.toUpperCase()}</Title>
+			<Title>{cat}</Title>
 			<FilterContainer>
 				<Filter>
 					<FilterText>Filter Products:</FilterText>

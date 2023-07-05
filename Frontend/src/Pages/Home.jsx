@@ -9,7 +9,7 @@ import Slider from "../Components/Slider";
 const Home = () => {
 	return (
 		<div>
-			<Navbar LinkColor="white" LinkShadow="true" />
+			<Navbar PosAbsolute="true" LinkColor="white" LinkShadow="true" />
 			<Slider />
 			<Categories />
 			<Products />
