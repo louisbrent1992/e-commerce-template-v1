@@ -52,8 +52,10 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
+	object-fit: contain;
 	height: 75%;
 	z-index: 2;
+	overflow: hidden;
 `;
 
 const Icon = styled.div`
