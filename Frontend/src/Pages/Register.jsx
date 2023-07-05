@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.a`
-	font-size: 48px;
+	font-size: 44px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -39,7 +39,7 @@ const Logo = styled.a`
 	cursor: pointer;
 	padding-left: 20px;
 
-	${tablet({ fontSize: "32px" })}
+	${tablet({ fontSize: "28px" })}
 `;
 
 const Title = styled.h2`

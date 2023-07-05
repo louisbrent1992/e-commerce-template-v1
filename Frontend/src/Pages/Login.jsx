@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.a`
-	font-size: 48px;
+	font-size: 44px;
 	padding-left: 20px;
 	color: black;
 	position: absolute;
@@ -38,7 +38,7 @@ const Logo = styled.a`
 	font-family: "Playfair Display", serif;
 	cursor: pointer;
 
-	${tablet({ fontSize: "32px" })}
+	${tablet({ fontSize: "28px" })}
 `;
 
 const Title = styled.h2`
