@@ -2,6 +2,8 @@ import { Router, Request, Response } from "express";
 import User from "../../Models/User";
 import Crypto from "crypto-js";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const { PASS_SECRET, JWT_SECRET } = process.env;
 

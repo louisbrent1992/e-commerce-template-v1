@@ -1,5 +1,8 @@
 import express, { Request, Response } from "express";
 import stripe from "stripe";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const router = express.Router();
 const { STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET } = process.env;
