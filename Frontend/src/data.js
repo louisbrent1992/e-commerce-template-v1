@@ -4,6 +4,7 @@ export const sliderItems = [
 		img: "/images/background-image-4.jpg",
 		title: "SPRING SALE",
 		desc: "Spring into Savings: Enjoy 30% Off on Our Refreshing Collection for a Limited Time!",
+		descMobile: "Spring into Savings!",
 		color: "#e6b800",
 	},
 	{
@@ -11,6 +12,7 @@ export const sliderItems = [
 		img: "/images/background-image-4.png",
 		title: "OUTERWEAR COLLECTION",
 		desc: "Elevate Your Style: Wrap Yourself in Glamour with Our Stunning Outerwear Collection",
+		descMobile: "Elevate Your Style!",
 		color: "white",
 	},
 	{
@@ -18,6 +20,7 @@ export const sliderItems = [
 		img: "/images/background-image-3.jpg",
 		title: "LOUNGEWEAR LOVE",
 		desc: "Unwind in Style: Discover the Perfect Lounge Wear for Ultimate Comfort",
+		descMobile: "Unwind in Style!",
 		color: "#e6b800",
 	},
 ];

@@ -13,39 +13,37 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif; /* Update this with your preferred font */
     color: #252322; /* Dark Gray */
     background-color: #ffffff; /* White */
-    
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif; /* Update this with your preferred title font */
     line-height: 1.2; /* 1.2x the font-size for headers */
-    text-align: center; /* Center align headers */
   }
 
-  h1 {
-    font-size: 44px; /* 1.5x the font-size for body text */
+  h1, header {
+    font-size: 32px; /* 1.5x the font-size for body text */
     font-weight: 700;
     letter-spacing: -2%; /* Adjusted letter spacing for headers */
 
-    @media only screen and (max-width: 720px) {
+    @media only screen and (max-width: 480px) {
 			font-size: 28px;
 		}
     
   }
 
-  p, ul, ol, li, h2, h3, h4, h5, h6 {
-    font-size: 26px; /* 1x the font-size for body text */
+  p, ul, ol, li, h2, h3, h4, h5, h6, a {
+    font-size: 20px; /* 1x the font-size for body text */
     color: #bcbcbc; /* Neutral gray */
     line-height: 1.4; /* 1.4x the font-size for body text */
-    margin: 0 auto; /* Center align body text */
 
-      @media only screen and (max-width: 720px) {
-			font-size: 22px;
+      @media only screen and (max-width: 480px) {
+			font-size: 18px;
 		}
   }
 
   a, link {
     text-decoration: none;
+    color: #252322;
   }
 
   a:hover, link:hover {
@@ -64,6 +62,78 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto; /* Center align container */
     overflow-wrap: break-word; /* Wrap long words to the next line */
   }
+
+  /* spinner/processing state, errors */
+.spinner,
+.spinner:before,
+.spinner:after {
+	border-radius: 50%;
+}
+
+.spinner {
+	color: #ffffff;
+	font-size: 22px;
+	text-indent: -99999px;
+	margin: 0px auto;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	box-shadow: inset 0 0 0 2px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.spinner:before,
+.spinner:after {
+	position: absolute;
+	content: "";
+}
+
+.spinner:before {
+	width: 10.4px;
+	height: 20.4px;
+	background: #5469d4;
+	border-radius: 20.4px 0 0 20.4px;
+	top: -0.2px;
+	left: -0.2px;
+	-webkit-transform-origin: 10.4px 10.2px;
+	transform-origin: 10.4px 10.2px;
+	-webkit-animation: loading 2s infinite ease 1.5s;
+	animation: loading 2s infinite ease 1.5s;
+}
+
+.spinner:after {
+	width: 10.4px;
+	height: 10.2px;
+	background: #5469d4;
+	border-radius: 0 10.2px 10.2px 0;
+	top: -0.1px;
+	left: 10.2px;
+	-webkit-transform-origin: 0px 10.2px;
+	transform-origin: 0px 10.2px;
+	-webkit-animation: loading 2s infinite ease;
+	animation: loading 2s infinite ease;
+}
+
+@keyframes loading {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	form {
+		width: 80vw;
+		min-width: initial;
+	}
+}
+
 
   /* Add any other global styles you want */
   /* ... */
