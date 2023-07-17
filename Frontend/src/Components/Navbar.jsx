@@ -67,7 +67,6 @@ const ExpandedMenu = styled.div`
 
 const NavLinksContainer = styled.div`
 	position: relative;
-	padding-inline: 20px;
 	display: flex;
 	${mobile({ display: "none" })};
 	gap: 1rem;
