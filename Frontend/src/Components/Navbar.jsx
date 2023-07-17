@@ -68,6 +68,7 @@ const ExpandedMenu = styled.div`
 const NavLinksContainer = styled.div`
 	position: relative;
 	display: flex;
+	align-items: center;
 	${mobile({ display: "none" })};
 	gap: 1rem;
 	color: ${(props) => props.color};
@@ -78,8 +79,8 @@ const NavLink = styled(Link)`
 	color: inherit;
 	text-shadow: ${(props) =>
 		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
-	margin-bottom: 5px;
 	font-weight: 700;
+	margin: 0;
 
 	&:hover {
 		color: #e6b800;
@@ -89,8 +90,8 @@ const NavLink = styled(Link)`
 const Cart = styled(ShoppingCartOutlined)`
 	color: ${(props) => props.color};
 	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))" : null};
-
+		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
+	padding-bottom: 3px;
 	&:hover {
 		color: #e6b800;
 	}
@@ -100,13 +101,13 @@ const MenuIcon = styled(Menu)`
 	color: ${(props) => props.color};
 	cursor: pointer;
 	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))" : null};
+		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
 `;
 const CloseIcon = styled(Close)`
 	color: ${(props) => props.color};
 	cursor: pointer;
 	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))" : null};
+		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
 `;
 
 const NavIconsContainer = styled.div`
