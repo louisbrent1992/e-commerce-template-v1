@@ -26,7 +26,10 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: -2%; /* Adjusted letter spacing for headers */
 
     @media only screen and (max-width: 480px) {
-			font-size: 28px;
+			font-size: 20px;
+		}
+    @media only screen and (min-width: 768px) and (max-width: 940px) {
+			font-size: 24px;
 		}
     
   }
