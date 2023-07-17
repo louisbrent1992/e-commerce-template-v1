@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
-import { desktop, mobile } from "../responsive";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
 	width: 100%;
@@ -29,7 +29,7 @@ const Arrow = styled.div`
 	right: ${(props) => props.direction === "right" && "10px"};
 	margin: auto;
 	cursor: pointer;
-	opacity: 0.5;
+	opacity: 0.4;
 	z-index: 2;
 
 	${mobile({ width: "30px", height: "30px" })}
@@ -45,7 +45,6 @@ const Wrapper = styled.div`
 const Slide = styled.div`
 	position: relative;
 	width: 100vw;
-	height: 100vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 `;
 
@@ -65,6 +64,7 @@ const AspectRatioBox = styled.div`
 		height: 100%;
 		object-fit: cover;
 		object-position: top;
+		filter: brightness(0.9);
 	}
 `;
 
@@ -86,18 +86,19 @@ const InfoContainer = styled.div`
 		justifyContent: "start",
 		alignItems: "center",
 		gap: "1rem",
-		top: "0",
+		bottom: 30,
+		padding: "0px",
 	})}
 `;
 
 const Title = styled.h1`
 	color: ${(props) => props.color};
-	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+	filter: brightness(1.2);
 
 	${mobile({
 		textAlign: "center",
 		width: "100%",
-		paddingTop: "30px",
 	})}
 `;
 
@@ -105,7 +106,7 @@ const Desc = styled.p`
 	font-weight: 500;
 	letter-spacing: 3px;
 	color: white;
-	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 	text-align: right;
 
 	${mobile({ display: "none" })};
@@ -114,7 +115,7 @@ const DescMobile = styled.p`
 	font-weight: 500;
 	letter-spacing: 3px;
 	color: white;
-	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 	text-align: center;
 
 	@media screen and (min-width: 480px) {
