@@ -80,6 +80,7 @@ const InfoContainer = styled.div`
 	padding: 50px;
 	gap: 2rem;
 	z-index: 9;
+	width: 100%;
 
 	${mobile({
 		justifyContent: "start",
@@ -95,7 +96,6 @@ const Title = styled.h1`
 
 	${mobile({
 		textAlign: "center",
-		fontSize: "22px",
 		width: "100%",
 		paddingTop: "30px",
 	})}
@@ -117,7 +117,9 @@ const DescMobile = styled.p`
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	text-align: center;
 
-	${desktop({ display: "none" })};
+	@media screen and (min-width: 480px) {
+		display: none;
+	}
 `;
 
 const Button = styled.button`

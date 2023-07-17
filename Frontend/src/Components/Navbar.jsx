@@ -1,8 +1,8 @@
 import { Badge } from "@mui/material";
-import { ShoppingCartOutlined } from "@mui/icons-material";
-import React, { useState } from "react";
+import { ShoppingCartOutlined, Menu, Close } from "@mui/icons-material";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { desktop, tablet } from "../responsive";
+import { desktop, mobile, tablet } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	${tablet({ padding: "10px 0px" })}
+	${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
@@ -34,8 +34,6 @@ const Logo = styled.h1`
 	text-transform: uppercase;
 	color: ${(props) => props.color};
 
-	${tablet({ fontSize: "24px" })}
-
 	&:hover {
 		color: #e6b800; /* Bright accent */
 	}
@@ -46,19 +44,6 @@ const Right = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	gap: 1rem;
-`;
-
-const MenuItem = styled.span`
-	color: ${(props) => props.color};
-	font-weight: 700;
-	cursor: pointer;
-	margin-left: 25px;
-	${mobile({ fontSize: "12px", marginLeft: "10px" })}
-
-	&:hover {
-		transform: scale(1.1);
-		color: #e6b800;
-	}
 `;
 
 const ExpandedMenu = styled.div`
@@ -84,7 +69,7 @@ const NavLinksContainer = styled.div`
 	position: relative;
 	padding-inline: 20px;
 	display: flex;
-	${tablet({ display: "none" })};
+	${mobile({ display: "none" })};
 	gap: 1rem;
 	color: ${(props) => props.color};
 	text-shadow: ${(props) => props.shadow && "2px 2px 2px rgba(0, 0, 0, 0.7)"};
@@ -127,6 +112,7 @@ const CloseIcon = styled(Close)`
 
 const NavIconsContainer = styled.div`
 	${desktop({ display: "none" })};
+	${tablet({ display: "none" })};
 `;
 
 const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
@@ -206,7 +192,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 						<NavLinksContainer
 							color={LinkColor}
 							shadow={LinkShadow}
-							tablet={tablet}
+							mobile={mobile}
 						>
 							{!currentUser ? (
 								<>

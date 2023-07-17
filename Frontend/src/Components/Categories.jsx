@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { categories } from "../data";
-import { tablet } from "../responsive";
+import { mobile } from "../responsive";
 import CategoryItem from "./CategoryItem";
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
 	overflow: hidden;
 	padding-block: 10px;
 	justify-content: center;
-	${tablet({ padding: "0px", flexDirection: "column" })}
+	${mobile({ padding: "0px", flexDirection: "column" })}
 `;
 
 const Categories = () => {

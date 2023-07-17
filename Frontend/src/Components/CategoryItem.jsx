@@ -39,8 +39,6 @@ const Title = styled.h1`
 	&:hover {
 		color: #e6b800;
 	}
-
-	${mobile({ fontSize: "24px" })}
 `;
 
 const Button = styled.button`

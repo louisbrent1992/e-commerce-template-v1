@@ -61,14 +61,14 @@ const SocialIcon = styled.a`
 
 const Center = styled.div`
 	flex: 1;
-	padding-inline: 20px;
+	padding: 0 20px 20px 20px;
 	display: flex;
 	height: 100%;
 	justify-content: start;
-	align-items: center;
+	align-items: start;
 	flex-direction: column;
-	border-inline: 0.1px solid #bcbcbc;
-	${mobile({ display: "none" })};
+	${mobile({ borderBlock: "0.1px solid #bcbcbc" })}
+	${tablet({ borderInline: "0.1px solid #bcbcbc" })}
 `;
 
 const Title = styled.h1`
@@ -77,13 +77,13 @@ const Title = styled.h1`
 	text-align: left;
 `;
 
-const List = styled.div`
+const LinkList = styled.div`
 	margin: 0;
 	display: flex;
 	flex-wrap: wrap;
 	text-align: left;
-	justify-content: center;
-
+	align-items: start;
+	gap: 1rem;
 	${tablet({ flexDirection: "column" })}
 `;
 
@@ -101,17 +101,13 @@ const ContentWrapper = styled.div`
 const ContactContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	gap: 1rem;
 `;
 
 const ContactItem = styled.div`
 	display: flex;
 	align-items: center;
-`;
-
-const Text = styled.p`
-	text-align: left;
-	padding: 0;
-	margin-left: 1rem;
+	gap: 1rem;
 `;
 
 const CopyrightContainer = styled.footer`
@@ -130,9 +126,9 @@ const Payment = styled.img`
 `;
 
 const Link = styled.a`
-	width: 50%;
-	margin-bottom: 10px;
 	color: #bcbcbc;
+	margin: 0;
+	${mobile({ width: "100%" })}
 `;
 
 const Bottom = styled.div`
@@ -159,9 +155,9 @@ const Footer = () => {
 					</Desc>
 				</Left>
 
-				<Center>
+				<Center mobile={mobile}>
 					<Title>Useful Links</Title>
-					<List>
+					<LinkList>
 						<Link href={"/"}>Home</Link>
 
 						<Link href="/cart">Cart</Link>
@@ -183,7 +179,7 @@ const Footer = () => {
 						<Link href="/support">Support</Link>
 
 						<Link href="">Terms</Link>
-					</List>
+					</LinkList>
 				</Center>
 
 				<Right>
@@ -192,19 +188,19 @@ const Footer = () => {
 						<ContactContainer>
 							<ContactItem>
 								<Room />
-								<Text>1111 W First St, Los Angeles, California 90044</Text>
+								<Link>1111 W First St, Los Angeles, California 90044</Link>
 							</ContactItem>
 							<ContactItem>
 								<Phone />
-								<Text>+1 562 555 5555</Text>
+								<Link>+1 562 555 5555</Link>
 							</ContactItem>
 							<ContactItem>
 								<MailOutline />
-								<Text>
+								<Link>
 									contact@
 									{"RE-DESIGN"}
 									.dev
-								</Text>
+								</Link>
 							</ContactItem>
 						</ContactContainer>
 					</ContentWrapper>
@@ -231,7 +227,7 @@ const Footer = () => {
 					<Link
 						style={{
 							width: "100%",
-							fontSize: "16px",
+							fontSize: "12px",
 							color: "#252322",
 							fontWeight: "600",
 						}}
