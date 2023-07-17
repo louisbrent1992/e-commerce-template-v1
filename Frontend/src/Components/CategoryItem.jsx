@@ -44,7 +44,7 @@ const Title = styled.h1`
 `;
 
 const Button = styled.button`
-	border: 0.3px solid black;
+	border: 0.3px solid #252322;
 	padding: 10px;
 	background-color: white;
 	color: gray;

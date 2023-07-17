@@ -3,18 +3,15 @@ import axios from "axios";
 import styled from "styled-components";
 import Navbar from "../Components/Navbar";
 
-const PageContainer = styled.div`
-	height: 100vh;
-	padding-top: 60px;
+const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	background-color: #f4f4f4;
+	height: 100vh;
 `;
 
 const Title = styled.h1`
-	color: #333;
+	color: #252322;
 `;
 
 const InfoSection = styled.section`
@@ -32,23 +29,26 @@ const InfoTitle = styled.h2`
 `;
 
 const InfoText = styled.p`
-	color: #333;
+	color: #252322;
 `;
 
 const Form = styled.form`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 `;
 
 const Input = styled.input`
 	padding: 10px;
 	margin-bottom: 10px;
+
 	border-radius: 5px;
 	border: 1px solid #ddd;
 `;
 
 const TextArea = styled.textarea`
 	padding: 10px;
+
 	margin-bottom: 10px;
 	border-radius: 5px;
 	border: 1px solid #ddd;
@@ -58,6 +58,7 @@ const TextArea = styled.textarea`
 
 const SubmitButton = styled.button`
 	background-color: #5469d4;
+
 	color: #fff;
 	padding: 10px 20px;
 	border-radius: 5px;
@@ -92,8 +93,8 @@ const Support = () => {
 	};
 
 	return (
-		<PageContainer>
-			<Navbar LinkColor={"black"} />
+		<Container>
+			<Navbar LinkColor={"#252322"} />
 			<Title>Customer Support</Title>
 			{error && <ErrorMessage>{error}</ErrorMessage>}
 			<InfoSection>
@@ -123,7 +124,7 @@ const Support = () => {
 					<SubmitButton type="submit">Submit</SubmitButton>
 				</Form>
 			</InfoSection>
-		</PageContainer>
+		</Container>
 	);
 };
 

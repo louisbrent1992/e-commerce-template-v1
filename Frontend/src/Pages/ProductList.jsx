@@ -79,7 +79,7 @@ const ProductList = () => {
 	return (
 		<Container>
 			<BackgroundContainer>
-				<Navbar LinkColor="white" LinkShadow="true" />
+				<Navbar LinkColor="white" LinkShadow="true" PosAbsolute="true" />
 				<BackgroundImage src={backgroundImage} alt={cat} />
 			</BackgroundContainer>
 
@@ -90,7 +90,7 @@ const ProductList = () => {
 					<Select name="color" onChange={handleFilters}>
 						<Option>Color</Option>
 						<Option>white</Option>
-						<Option>black</Option>
+						<Option>#252322</Option>
 						<Option>red</Option>
 						<Option>blue</Option>
 						<Option>yellow</Option>

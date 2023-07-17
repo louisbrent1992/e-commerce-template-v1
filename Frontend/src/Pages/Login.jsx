@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const Logo = styled.a`
 	font-size: 44px;
 	padding-left: 20px;
-	color: black;
+	color: #252322;
 	position: absolute;
 	top: 0;
 	left: 0;

@@ -33,7 +33,7 @@ const Logo = styled.a`
 	position: absolute;
 	top: 0;
 	left: 0;
-	color: black;
+	color: #252322;
 	font-weight: bold;
 	font-family: "Playfair Display", serif;
 	cursor: pointer;

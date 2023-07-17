@@ -14,6 +14,7 @@ const Product = styled.div`
 	display: flex;
 	justify-content: space-between;
 	${mobile({ flexDirection: "column" })}
+	margin-block: 2rem;
 `;
 
 const ProductDetail = styled.div`
@@ -22,14 +23,17 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
+	max-height: 300px;
 	width: 200px;
+	object-fit: cover;
 	object-position: -20px 0px;
 `;
 
 const Details = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: start;
+	gap: 1rem;
 `;
 
 const ProductName = styled.span``;

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { tablet } from "../responsive";
 
 // Styled-components section
 const OrderCardContainer = styled.div`
 	padding: 15px;
-	border: 1px solid #ccc;
+	border: 1px solid #bcbcbc;
 	border-radius: 10px;
 	margin-bottom: 15px;
 	display: flex;
@@ -12,8 +13,9 @@ const OrderCardContainer = styled.div`
 `;
 
 const OrderTitle = styled.h3`
-	color: #333;
+	color: #252322;
 	margin-bottom: 10px;
+	${tablet({ fontSize: "20px" })}
 `;
 
 const OrderText = styled.p`

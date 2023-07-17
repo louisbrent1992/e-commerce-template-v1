@@ -3,18 +3,20 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { removeFavProduct } from "../redux/wishlistRedux"; // add this action in your wishlistRedux
+import { addProduct } from "../redux/cartRedux";
 
 const Item = styled.div`
-	width: 80%;
+	width: 100%;
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 10px;
+	align-items: start;
+	margin-block: 2rem;
+	gap: 4rem;
 `;
 
 const Image = styled.img`
+	max-height: 300px;
 	width: 100px;
 	object-fit: cover;
 `;
@@ -31,6 +33,23 @@ const ItemName = styled.p`
 	font-weight: bold;
 `;
 
+const ButtonContainer = styled.div`
+	display: flex;
+	width: 100%;
+	gap: 1rem;
+`;
+
+const AddButton = styled.button`
+	padding: 10px;
+	font-weight: 600;
+	cursor: pointer;
+	border: ${(props) => props.type === "filled" && "none"};
+	background-color: ${(props) =>
+		props.type === "filled" ? "#252322" : "transparent"};
+	color: ${(props) => props.type === "filled" && "white"};
+	cursor: pointer;
+`;
+
 const DeleteButton = styled.button`
 	border: none;
 	background-color: transparent;
@@ -39,6 +58,10 @@ const DeleteButton = styled.button`
 
 const WishlistItem = ({ item }) => {
 	const dispatch = useDispatch();
+
+	const handleAddProduct = () => {
+		dispatch(addProduct({ ...item, quantity: 1 }));
+	};
 
 	const handleRemove = (id) => {
 		dispatch(removeFavProduct(id));
@@ -56,10 +79,14 @@ const WishlistItem = ({ item }) => {
 				<span>Product ID:</span>
 				<ProductID>{item._id}</ProductID>
 			</div>
-
-			<DeleteButton onClick={() => handleRemove(item._id)}>
-				<DeleteIcon />
-			</DeleteButton>
+			<ButtonContainer>
+				<AddButton type="filled" onClick={handleAddProduct}>
+					Add to Cart
+				</AddButton>
+				<DeleteButton onClick={() => handleRemove(item._id)}>
+					<DeleteIcon />
+				</DeleteButton>
+			</ButtonContainer>
 		</Item>
 	);
 };

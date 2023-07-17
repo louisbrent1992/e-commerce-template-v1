@@ -112,7 +112,7 @@ const Cart = () => {
 
 	return (
 		<Container>
-			<Navbar LinkColor={"black"} />
+			<Navbar LinkColor={"#252322"} />
 			<Wrapper>
 				<Title>YOUR BAG</Title>
 				<Top viewWishlist={viewWishlist}>

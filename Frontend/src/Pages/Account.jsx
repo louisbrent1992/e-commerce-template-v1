@@ -7,26 +7,25 @@ import OrderCard from "../Components/OrderCard";
 
 // Styled-components section
 const PageContainer = styled.div`
-	padding-top: 60px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
 
 const Title = styled.h1`
-	color: #333;
+	color: #252322;
 `;
 
 const InfoSection = styled.section`
 	width: 80%;
 	margin: 20px 0;
 	padding: 20px;
-	border: 1px solid #ccc;
+	border: 1px solid #bcbcbc;
 	border-radius: 10px;
 `;
 
 const InfoTitle = styled.h2`
-	color: #333;
+	color: #252322;
 	margin-bottom: 10px;
 `;
 
@@ -57,7 +56,7 @@ const TextInput = styled.input`
 	padding: 10px;
 	margin-top: 10px;
 	margin-right: 10px;
-	border: 1px solid #ccc;
+	border: 1px solid #bcbcbc;
 	border-radius: 5px;
 	font-size: 1em;
 	width: 100%;
@@ -135,7 +134,7 @@ const AccountOverview = () => {
 
 	return (
 		<PageContainer>
-			<Navbar LinkColor={"black"} />
+			<Navbar LinkColor={"#252322"} />
 			<Title>Account Overview</Title>
 			{error && <ErrorMessage>{error}</ErrorMessage>}
 			<InfoSection>

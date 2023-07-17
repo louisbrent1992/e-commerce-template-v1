@@ -162,7 +162,7 @@ const Product = () => {
 
 	return (
 		<Container>
-			<Navbar LinkColor={"black"} />
+			<Navbar LinkColor={"#252322"} />
 			<Wrapper>
 				<ImgContainer>
 					<Image src={product.img} />

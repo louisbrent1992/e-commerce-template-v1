@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
-import { mobile } from "../responsive";
+import { desktop, mobile } from "../responsive";
 
 const Container = styled.div`
 	width: 100%;
@@ -82,13 +82,10 @@ const InfoContainer = styled.div`
 	z-index: 9;
 
 	${mobile({
-		padding: "30px",
-		height: "100vh",
-		width: "100%",
-		bottom: "10rem",
-		justifyContent: "center",
+		justifyContent: "start",
 		alignItems: "center",
 		gap: "1rem",
+		top: "0",
 	})}
 `;
 
@@ -97,8 +94,10 @@ const Title = styled.h1`
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 
 	${mobile({
-		fontSize: "40px",
 		textAlign: "center",
+		fontSize: "22px",
+		width: "100%",
+		paddingTop: "30px",
 	})}
 `;
 
@@ -109,12 +108,16 @@ const Desc = styled.p`
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	text-align: right;
 
-	${mobile({
-		fontSize: "16px",
-		fontWeight: "700",
-		textAlign: "left",
-		paddingLeft: "30px",
-	})}
+	${mobile({ display: "none" })};
+`;
+const DescMobile = styled.p`
+	font-weight: 500;
+	letter-spacing: 3px;
+	color: white;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+	text-align: center;
+
+	${desktop({ display: "none" })};
 `;
 
 const Button = styled.button`
@@ -138,7 +141,6 @@ const Button = styled.button`
 
 const Slider = () => {
 	const [slideIndex, setSlideIndex] = useState(0);
-
 	const handleClick = (direction) => {
 		if (direction === "left") {
 			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : sliderItems.length - 1);
@@ -170,6 +172,7 @@ const Slider = () => {
 						<InfoContainer>
 							<Title color={item.color}>{item.title}</Title>
 							<Desc>{item.desc}</Desc>
+							<DescMobile>{item.descMobile}</DescMobile>
 							<Button color={item.color}>SHOP NOW</Button>
 						</InfoContainer>
 						<AspectRatioBox>

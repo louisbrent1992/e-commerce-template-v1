@@ -16,12 +16,13 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-inline: 20px;
+	height: 100vh;
 `;
 
 const Wrapper = styled.div`
 	display: flex;
+
 	align-items: start;
-	padding-block: 20px;
 	${mobile({ flexDirection: "column" })}
 `;
 
@@ -30,6 +31,7 @@ const Left = styled.div`
 	padding-inline: 20px;
 	display: flex;
 	flex-direction: column;
+	height: 90vh;
 `;
 
 const Logo = styled.h1`
@@ -42,6 +44,7 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
 	display: flex;
+	margin-left: 1rem;
 `;
 
 const SocialIcon = styled.a`
@@ -58,15 +61,14 @@ const SocialIcon = styled.a`
 
 const Center = styled.div`
 	flex: 1;
-
 	padding-inline: 20px;
 	display: flex;
-	justify-content: center;
+	height: 100%;
+	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	border-inline: 0.5px solid #bcbcbc;
-
-	${mobile({ display: "none" })}
+	border-inline: 0.1px solid #bcbcbc;
+	${mobile({ display: "none" })};
 `;
 
 const Title = styled.h1`
@@ -112,32 +114,35 @@ const Text = styled.p`
 	margin-left: 1rem;
 `;
 
-const CopyrightContainer = styled.div`
+const CopyrightContainer = styled.footer`
 	display: flex;
 	align-items: center;
 	margin-right: 1rem;
+
+	${mobile({ display: "none" })}
 `;
 const CopyrightIcon = styled(CopyrightOutlined)``;
 
 const Payment = styled.img`
 	object-fit: contain;
+
+	${mobile({ display: "none" })}
 `;
 
 const Link = styled.a`
 	width: 50%;
-	font-size: 28px;
 	margin-bottom: 10px;
 	color: #bcbcbc;
-
-	${tablet({ fontSize: "24px" })}
 `;
 
 const Bottom = styled.div`
 	width: 100%;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-`;
 
+	${mobile({ justifyContent: "center" })}
+`;
 const Footer = () => {
 	const currentUser = useSelector((state) => state.user.currentUser);
 	return (
@@ -223,7 +228,15 @@ const Footer = () => {
 				</SocialContainer>
 				<CopyrightContainer>
 					<CopyrightIcon style={{ fontSize: "small" }} />
-					<Link style={{ width: "100%", fontSize: "16px" }} src="">
+					<Link
+						style={{
+							width: "100%",
+							fontSize: "16px",
+							color: "#252322",
+							fontWeight: "600",
+						}}
+						src=""
+					>
 						2023 Advent Hub Innovations llc.
 					</Link>
 				</CopyrightContainer>

@@ -10,23 +10,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/cartRedux";
 import { publicRequest } from "../requestMethods";
-import "./CheckoutForm.css";
+import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 
 const Container = styled.div`
-	height: 100vh;
 	display: flex;
 	justify-content: center;
+	width: 100%;
 `;
 
 const Form = styled.form`
-	margin-top: 60px;
-	min-width: 500px;
-	align-self: center;
-	box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-		0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+	padding: 20px 40px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 7px;
-	padding: 40px;
 `;
 const Button = styled.button`
 	background: #5469d4;
@@ -35,6 +31,7 @@ const Button = styled.button`
 	border-radius: 4px;
 	border: 0;
 	padding: 12px 16px;
+	margin-top: 1rem;
 	font-size: 16px;
 	font-weight: 600;
 	cursor: pointer;
@@ -68,6 +65,7 @@ export default function CheckoutForm() {
 	const [shippingData, setShippingData] = useState({});
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	const randomString = uuidv4();
 
 	const navigate = useNavigate();
 
@@ -97,7 +95,7 @@ export default function CheckoutForm() {
 	const createOrder = async () => {
 		try {
 			const res = await publicRequest.post("/api/v1/orders", {
-				userId: currentUser._id,
+				userId: currentUser?._id || randomString,
 				name: customerName,
 				products: cart.products.map((item) => ({
 					productId: item._id,
@@ -108,9 +106,23 @@ export default function CheckoutForm() {
 				address: shippingData,
 			});
 
-			if (res.status === 200) dispatch(clearCart());
-			navigate("/success", { state: { type: "order", orderId: res.data._id } });
+			if (res.data) {
+				setMessage("Payment successful.");
+				const timeoutId = new Promise(() => {
+					setTimeout(() => {
+						dispatch(clearCart());
+						navigate("/success", {
+							state: { type: "order", orderId: res.data._id },
+						});
+					}, 2000);
+				});
+
+				return () => clearTimeout(timeoutId);
+			} else {
+				throw new Error("There was an error creating your order.");
+			}
 		} catch (err) {
+			console.log(`server error, ${err}`);
 			setIsLoading(false);
 			setMessage("There was an error creating your order. Please try again.");
 		}
@@ -126,24 +138,9 @@ export default function CheckoutForm() {
 		setIsLoading(true);
 
 		try {
-			const { error, paymentIntent } = await stripe.confirmPayment({
-				elements,
-				redirect: "if_required",
-			});
-
-			if (error) {
-				setMessage(error.message);
-			} else if (paymentIntent.status === "succeeded") {
-				setMessage("Payment successful.");
-				// await for the createOrder() to finish before setting isLoading to false
-				await createOrder();
-			} else {
-				setMessage("An unexpected error occurred.");
-			}
+			await createOrder();
 		} catch (error) {
-			setMessage(
-				"There was an error processing your payment. Please try again."
-			);
+			setMessage(`There was an error processing your payment. ${error}.`);
 		}
 
 		setIsLoading(false);

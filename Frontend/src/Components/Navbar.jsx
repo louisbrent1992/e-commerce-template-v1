@@ -2,16 +2,15 @@ import { Badge } from "@mui/material";
 import { ShoppingCartOutlined } from "@mui/icons-material";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { desktop, tablet } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import UserMenu from "./UserMenu";
 
-const Container = styled.div`
-	position: ${(props) => props.PosAbsolute && "absolute"};
-	padding-inline: 20px;
-	top: ${(props) => props.PosAbsolute && "0"};
+const Container = styled.nav`
+	position: ${(props) => (props.PosAbsolute ? "absolute" : "relative")};
+	padding-inline: 40px;
 	width: 100%;
 	z-index: 9;
 `;
@@ -20,7 +19,7 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	${mobile({ padding: "10px 0px" })}
+	${tablet({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
@@ -30,12 +29,12 @@ const Left = styled.div`
 `;
 
 const Logo = styled.h1`
-	color: white;
 	text-shadow: ${(props) =>
 		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
 	text-transform: uppercase;
 	color: ${(props) => props.color};
-	${mobile({ fontSize: "24px" })}
+
+	${tablet({ fontSize: "24px" })}
 
 	&:hover {
 		color: #e6b800; /* Bright accent */
@@ -46,6 +45,7 @@ const Right = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+	gap: 1rem;
 `;
 
 const MenuItem = styled.span`
@@ -61,10 +61,41 @@ const MenuItem = styled.span`
 	}
 `;
 
-const NavLink = styled(Link)`
+const ExpandedMenu = styled.div`
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	width: 50vw;
+	background: hsl(0 0% 100% /0.1);
+	backdrop-filter: blur(0.5rem);
+	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	z-index: -1;
 	color: ${(props) => props.color};
+	text-shadow: ${(props) => props.shadow && "2px 2px 2px rgba(0, 0, 0, 0.7)"};
+`;
+
+const NavLinksContainer = styled.div`
+	position: relative;
+	padding-inline: 20px;
+	display: flex;
+	${tablet({ display: "none" })};
+	gap: 1rem;
+	color: ${(props) => props.color};
+	text-shadow: ${(props) => props.shadow && "2px 2px 2px rgba(0, 0, 0, 0.7)"};
+`;
+
+const NavLink = styled(Link)`
+	color: inherit;
 	text-shadow: ${(props) =>
 		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
+	margin-bottom: 5px;
+	font-weight: 700;
 
 	&:hover {
 		color: #e6b800;
@@ -81,19 +112,37 @@ const Cart = styled(ShoppingCartOutlined)`
 	}
 `;
 
+const MenuIcon = styled(Menu)`
+	color: ${(props) => props.color};
+	cursor: pointer;
+	filter: ${(props) =>
+		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))" : null};
+`;
+const CloseIcon = styled(Close)`
+	color: ${(props) => props.color};
+	cursor: pointer;
+	filter: ${(props) =>
+		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))" : null};
+`;
+
+const NavIconsContainer = styled.div`
+	${desktop({ display: "none" })};
+`;
+
 const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 	const quantity = useSelector((state) => state.cart.quantity);
 	const currentUser = useSelector((state) => state.user.currentUser);
 
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [expand, setExpand] = useState(false);
+	const [expandSub, setExpandSub] = useState(false);
 
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
+	const toggleExpand = useCallback(() => {
+		setExpand(!expand);
+	}, [expand]);
 
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
+	const toggleSubMenu = useCallback(() => {
+		setExpandSub((prevState) => !prevState);
+	}, []);
 
 	return (
 		<Container PosAbsolute={PosAbsolute}>
@@ -106,43 +155,103 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 					</NavLink>
 				</Left>
 				<Right>
-					{!currentUser ? (
-						<>
-							<NavLink color={LinkColor} shadow={LinkShadow} to="/register">
-								<MenuItem>REGISTER</MenuItem>
-							</NavLink>
-							<NavLink color={LinkColor} shadow={LinkShadow} to="/login">
-								<MenuItem>LOGIN</MenuItem>
-							</NavLink>
-							<NavLink color={LinkColor} shadow={LinkShadow} to="/support">
-								<MenuItem>SUPPORT</MenuItem>
-							</NavLink>
-						</>
-					) : (
-						<>
-							<MenuItem
+					<NavIconsContainer>
+						{expand ? (
+							<CloseIcon
+								onClick={toggleExpand}
 								color={LinkColor}
 								shadow={LinkShadow}
-								onClick={handleClick}
-							>
-								user logged in, {currentUser.username}
-							</MenuItem>
-
-							<UserMenu anchorEl={anchorEl} handleClose={handleClose} />
-						</>
+							/>
+						) : (
+							<MenuIcon
+								onClick={toggleExpand}
+								color={LinkColor}
+								shadow={LinkShadow}
+							/>
+						)}
+					</NavIconsContainer>
+					{expand ? (
+						<ExpandedMenu color={LinkColor} shadow={LinkShadow}>
+							{!currentUser ? (
+								<>
+									<NavLink to="/register">REGISTER</NavLink>
+									<NavLink to="/login">LOGIN</NavLink>
+									<NavLink to="/support">SUPPORT</NavLink>
+									<NavLink to="/cart">
+										<Badge
+											badgeContent={quantity}
+											color="primary"
+											overlap="rectangular"
+										>
+											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+										</Badge>
+									</NavLink>
+								</>
+							) : (
+								<>
+									<UserMenu color={LinkColor} shadow={LinkShadow} />
+									<NavLink to="/cart">
+										<Badge
+											badgeContent={quantity}
+											color="primary"
+											overlap="rectangular"
+										>
+											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+										</Badge>
+									</NavLink>
+								</>
+							)}
+						</ExpandedMenu>
+					) : (
+						<NavLinksContainer
+							color={LinkColor}
+							shadow={LinkShadow}
+							tablet={tablet}
+						>
+							{!currentUser ? (
+								<>
+									<NavLink to="/register">REGISTER</NavLink>
+									<NavLink to="/login">LOGIN</NavLink>
+									<NavLink to="/support">SUPPORT</NavLink>
+									<NavLink to="/cart">
+										<Badge
+											badgeContent={quantity}
+											color="primary"
+											overlap="rectangular"
+										>
+											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+										</Badge>
+									</NavLink>
+								</>
+							) : (
+								<>
+									<NavLink
+										color={LinkColor}
+										shadow={LinkShadow}
+										onClick={toggleSubMenu}
+									>
+										user logged in, {currentUser.username}
+									</NavLink>
+									<UserMenu
+										color={LinkColor}
+										shadow={LinkShadow}
+										expandSub={expandSub}
+										handleSubMenu={toggleSubMenu}
+										desktop="true"
+									/>
+									<NavLink to="/cart">
+										<Badge
+											badgeContent={quantity}
+											color="primary"
+											overlap="rectangular"
+										>
+											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+										</Badge>
+									</NavLink>
+								</>
+							)}
+						</NavLinksContainer>
 					)}
-
-					<NavLink to="/cart">
-						<MenuItem>
-							<Badge
-								badgeContent={quantity}
-								color="primary"
-								overlap="rectangular"
-							>
-								<Cart htmlColor={LinkColor} shadow={LinkShadow} />
-							</Badge>
-						</MenuItem>
-					</NavLink>
 				</Right>
 			</Wrapper>
 		</Container>
