@@ -33,6 +33,7 @@ const Details = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
+	${mobile({ justifyContent: "center", fontSize: "12px" })}
 	gap: 1rem;
 `;
 
