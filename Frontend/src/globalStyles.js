@@ -21,26 +21,32 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, header {
-    font-size: 32px; /* 1.5x the font-size for body text */
     font-weight: 700;
     letter-spacing: -2%; /* Adjusted letter spacing for headers */
 
     @media only screen and (max-width: 480px) {
 			font-size: 20px;
 		}
-    @media only screen and (min-width: 768px) and (max-width: 940px) {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
 			font-size: 24px;
+		}
+    @media only screen and (min-width: 1025px) {
+			font-size: 38px;
 		}
     
   }
 
   p, ul, ol, li, h2, h3, h4, h5, h6, a {
-    font-size: 20px; /* 1x the font-size for body text */
+    font-size: 18px; /* 1x the font-size for body text */
     color: #bcbcbc; /* Neutral gray */
     line-height: 1.4; /* 1.4x the font-size for body text */
 
       @media only screen and (max-width: 480px) {
-			font-size: 18px;
+			font-size: 16px;
+		}
+
+      @media only screen and (min-width: 1025px) {
+			font-size: 24px;
 		}
   }
 
@@ -65,6 +71,8 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto; /* Center align container */
     overflow-wrap: break-word; /* Wrap long words to the next line */
   }
+
+  img {max-width: 100%;}
 
   /* spinner/processing state, errors */
 .spinner,

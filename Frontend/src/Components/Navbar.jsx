@@ -1,11 +1,10 @@
-import { Badge } from "@mui/material";
-import { ShoppingCartOutlined, Menu, Close } from "@mui/icons-material";
+import { Badge } from "@material-ui/core";
+import { ShoppingCartOutlined, Menu, Close } from "@material-ui/icons";
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { desktop, mobile, tablet } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
 import UserMenu from "./UserMenu";
 
 const Container = styled.nav`
@@ -79,7 +78,7 @@ const NavLink = styled(Link)`
 	color: inherit;
 	text-shadow: ${(props) =>
 		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
-	font-weight: 700;
+	font-weight: 500;
 	margin: 0;
 
 	&:hover {
@@ -99,12 +98,14 @@ const Cart = styled(ShoppingCartOutlined)`
 
 const MenuIcon = styled(Menu)`
 	color: ${(props) => props.color};
+	font-size: 33.6px;
 	cursor: pointer;
 	filter: ${(props) =>
 		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
 `;
 const CloseIcon = styled(Close)`
 	color: ${(props) => props.color};
+	font-size: 33.6px;
 	cursor: pointer;
 	filter: ${(props) =>
 		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
@@ -136,7 +137,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 				<Left>
 					<NavLink to="/">
 						<Logo color={LinkColor} shadow={LinkShadow}>
-							RE-DESIGN
+							{"GR\u221EW"}
 						</Logo>
 					</NavLink>
 				</Left>
@@ -169,7 +170,11 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											color="primary"
 											overlap="rectangular"
 										>
-											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+											<Cart
+												style={{ height: "33.6px", padding: "0px" }}
+												htmlColor={LinkColor}
+												shadow={LinkShadow}
+											/>
 										</Badge>
 									</NavLink>
 								</>
@@ -182,7 +187,11 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											color="primary"
 											overlap="rectangular"
 										>
-											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+											<Cart
+												style={{ height: "33.6px", padding: "0px" }}
+												htmlColor={LinkColor}
+												shadow={LinkShadow}
+											/>
 										</Badge>
 									</NavLink>
 								</>
@@ -205,7 +214,11 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											color="primary"
 											overlap="rectangular"
 										>
-											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+											<Cart
+												style={{ height: "33.6px", padding: "0px" }}
+												htmlColor={LinkColor}
+												shadow={LinkShadow}
+											/>
 										</Badge>
 									</NavLink>
 								</>
@@ -231,7 +244,11 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											color="primary"
 											overlap="rectangular"
 										>
-											<Cart htmlColor={LinkColor} shadow={LinkShadow} />
+											<Cart
+												style={{ height: "33.6px", padding: "0px" }}
+												htmlColor={LinkColor}
+												shadow={LinkShadow}
+											/>
 										</Badge>
 									</NavLink>
 								</>
