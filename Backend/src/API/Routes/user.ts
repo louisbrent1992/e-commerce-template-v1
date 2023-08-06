@@ -11,7 +11,6 @@ router.post("/register", async (req: Request, res: Response): Promise<void> => {
 	const { email, username } = req.body;
 
 	try {
-		// Check if user already exists
 		const existingUser = await User.findOne({ $or: [{ email }, { username }] });
 		if (existingUser) {
 			res.status(400).json({ message: "User already exists" });
@@ -50,13 +49,14 @@ router.post("/login", async (req: Request, res: Response): Promise<any> => {
 	}
 });
 
+// User avatar upload route
 router.put(
 	"/users/avatar_upload/:id",
 	multerUpload.single("avatar"),
-	async (req: Request, res: Response): Promise<any> => {
+	async (req: any, res: Response): Promise<any> => {
 		const { id } = req.params;
 		const userFound = await User.findById(id);
-		const avatar = await cloudinaryUpload(req.file.path);
+		const avatar = await cloudinaryUpload(req?.file.path);
 
 		try {
 			if (userFound) {
@@ -66,7 +66,7 @@ router.put(
 					{ $set: { avatar: avatar?.secure_url } },
 					{ new: true }
 				);
-				console.log(updatedUser);
+
 				res.status(200).json(updatedUser);
 			} else {
 				res.status(404).json({ message: "User not found" });
