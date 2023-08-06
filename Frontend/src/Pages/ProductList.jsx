@@ -9,11 +9,12 @@ import { useState } from "react";
 import { categories } from "../data";
 
 const Container = styled.div`
-	overflow-x: hidden;
+	overflow: hidden;
 `;
 
 const BackgroundContainer = styled.div`
 	position: relative;
+
 	width: 100vw;
 	height: 100vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
@@ -82,7 +83,6 @@ const ProductList = () => {
 				<Navbar LinkColor="white" LinkShadow="true" PosAbsolute="true" />
 				<BackgroundImage src={backgroundImage} alt={cat} />
 			</BackgroundContainer>
-
 			<Title>{cat}</Title>
 			<FilterContainer>
 				<Filter>
