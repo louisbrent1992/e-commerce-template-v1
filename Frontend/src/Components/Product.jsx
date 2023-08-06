@@ -122,7 +122,12 @@ const Product = ({ item }) => {
 	return (
 		<Container>
 			<Circle />
-			<Image src={item.img} />
+			<Image
+				src={
+					item.img ||
+					"https://res.cloudinary.com/client-images/image/upload/c_scale,w_360/v1691110086/eCommerce%20Site%20Images/AdobeStock_301378170_inpdne.eps"
+				}
+			/>
 			<Info
 				inCart={currentItemInCart}
 				inWishlist={currentItemInWishlist}
