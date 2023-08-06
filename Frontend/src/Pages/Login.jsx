@@ -43,7 +43,6 @@ const Logo = styled.a`
 
 const Title = styled.h2`
 	font-weight: 300;
-
 	color: ${(props) => props.theme.tertiary};
 `;
 
@@ -90,23 +89,36 @@ const Anchor = styled.a`
 
 const ErrorMessage = styled.span`
 	color: red;
+	font-weight: bold;
+`;
+
+const Message = styled.span`
+	color: green;
+	font-weight: bold;
 `;
 
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [statusMessage, setStatusMessage] = useState("");
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { isFetching, error } = useSelector((state) => state.user);
+	const { isFetching, error, message } = useSelector((state) => state.user);
 
-	const handleClick = (e) => {
+	const handleClick = async (e) => {
 		e.preventDefault();
-		login(dispatch, { username, password });
-		navigate("/");
+		setStatusMessage("Logging in...");
+		await login(dispatch, { username, password });
+		setStatusMessage(message);
+		if (isFetching === false)
+			setTimeout(() => {
+				navigate("/");
+			}, 2000);
 	};
+
 	return (
 		<Container>
-			<Logo href="/">{"RE-DESIGN"}</Logo>
+			<Logo href="/">{"GR\u221EW"}</Logo>
 			<Wrapper>
 				<Title>LOGIN</Title>
 				<Form>
@@ -124,7 +136,12 @@ const Login = () => {
 					<Button onClick={handleClick} disabled={isFetching}>
 						LOGIN
 					</Button>
-					{error && <ErrorMessage>Wrong username/password</ErrorMessage>}
+					{error ? (
+						<ErrorMessage>{statusMessage}</ErrorMessage>
+					) : (
+						<Message>{statusMessage}</Message>
+					)}
+					{/* TODO: Add forgot password feature. */}
 					<Anchor onClick={() => null}>FORGOT PASSWORD?</Anchor>
 					<Anchor onClick={() => navigate("/register")}>
 						CREATE A NEW ACCOUNT
