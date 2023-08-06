@@ -1,11 +1,12 @@
-import { Badge } from "@material-ui/core";
+import { Badge, MenuItem } from "@material-ui/core";
 import { ShoppingCartOutlined, Menu, Close } from "@material-ui/icons";
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { desktop, mobile, tablet } from "../responsive";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import UserMenu from "./UserMenu";
+import { logout } from "../redux/userRedux";
 
 const Container = styled.nav`
 	position: ${(props) => (props.PosAbsolute ? "absolute" : "relative")};
@@ -137,7 +138,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 				<Left>
 					<NavLink to="/">
 						<Logo color={LinkColor} shadow={LinkShadow}>
-							{"GR\u221EW"}
+							RE-DESIGN
 						</Logo>
 					</NavLink>
 				</Left>
