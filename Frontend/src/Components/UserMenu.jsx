@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Badge, MenuItem } from "@mui/material";
-import { ShoppingCartOutlined } from "@mui/material/icons";
+import { ShoppingCartOutlined } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userRedux";

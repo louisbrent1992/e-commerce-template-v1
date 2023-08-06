@@ -1,5 +1,5 @@
-import { Badge, MenuItem } from "@material-ui/core";
-import { ShoppingCartOutlined, Menu, Close } from "@material-ui/icons";
+import { Badge } from "@mui/material";
+import { ShoppingCartOutlined, Menu, Close } from "@mui/icons-material";
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { desktop, mobile, tablet } from "../responsive";
