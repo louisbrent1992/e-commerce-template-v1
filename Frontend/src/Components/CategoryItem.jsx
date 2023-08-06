@@ -36,6 +36,8 @@ const Title = styled.h1`
 	margin: 0 auto;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 
+	${tablet({ fontSize: "24px" })};
+
 	&:hover {
 		color: #e6b800;
 	}
