@@ -1,18 +1,17 @@
 import GlobalStyles from "./globalStyles";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import ScrollPos from "./Components/ScrollPos";
-import Home from "./Pages/Home";
-import Cart from "./Pages/Cart";
-import AccountOverview from "./Pages/Account";
-import Checkout from "./Pages/Checkout";
 import Product from "./Pages/Product";
+import Home from "./Pages/Home";
 import ProductList from "./Pages/ProductList";
-import Success from "./Pages/Success";
-import Support from "./Pages/Support";
-import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Success from "./Pages/Success";
+import Cart from "./Pages/Cart";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import Checkout from "./Pages/Checkout";
+import ScrollPos from "./Components/ScrollPos";
+import AccountOverview from "./Pages/Account";
+import Support from "./Pages/Support";
 
 const theme = {
 	primary: "#665a4e",
@@ -28,8 +27,6 @@ const theme = {
 };
 
 const App = () => {
-	const user = useSelector((state) => state.user.currentUser);
-
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />
