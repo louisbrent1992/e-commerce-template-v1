@@ -69,7 +69,13 @@ const WishlistItem = ({ item }) => {
 
 	return (
 		<Item key={item._id}>
-			<Image src={item.img} alt={item.title} />
+			<Image
+				src={
+					item.img ||
+					"https://res.cloudinary.com/client-images/image/upload/c_scale,w_360/v1691110086/eCommerce%20Site%20Images/AdobeStock_301378170_inpdne.eps"
+				}
+				alt={item.title}
+			/>
 			<div>
 				<span>Product Name:</span>
 				<ItemName>{item.title}</ItemName>
