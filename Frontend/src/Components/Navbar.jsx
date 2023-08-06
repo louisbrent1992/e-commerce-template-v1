@@ -10,7 +10,6 @@ import { logout } from "../redux/userRedux";
 
 const Container = styled.nav`
 	position: ${(props) => (props.PosAbsolute ? "absolute" : "relative")};
-	padding-inline: 40px;
 	width: 100%;
 	z-index: 9;
 `;
@@ -32,6 +31,7 @@ const Logo = styled.h1`
 	text-shadow: ${(props) =>
 		props.shadow ? "2px 2px 2px rgba(0, 0, 0, 0.7)" : null};
 	text-transform: uppercase;
+	padding-left: 1rem;
 	color: ${(props) => props.color};
 
 	&:hover {
@@ -66,8 +66,8 @@ const ExpandedMenu = styled.div`
 `;
 
 const NavLinksContainer = styled.div`
-	position: relative;
 	display: flex;
+	padding-right: 1rem;
 	align-items: center;
 	${mobile({ display: "none" })};
 	gap: 1rem;
@@ -89,9 +89,7 @@ const NavLink = styled(Link)`
 
 const Cart = styled(ShoppingCartOutlined)`
 	color: ${(props) => props.color};
-	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
-	padding-bottom: 3px;
+	filter: ${(props) => (!props.shadow ? null : props.shadow)};
 	&:hover {
 		color: #e6b800;
 	}
@@ -101,20 +99,19 @@ const MenuIcon = styled(Menu)`
 	color: ${(props) => props.color};
 	font-size: 33.6px;
 	cursor: pointer;
-	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
+	filter: ${(props) => (!props.shadow ? null : props.shadow)};
 `;
 const CloseIcon = styled(Close)`
 	color: ${(props) => props.color};
 	font-size: 33.6px;
 	cursor: pointer;
-	filter: ${(props) =>
-		props.shadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null};
+	filter: ${(props) => (!props.shadow ? null : props.shadow)};
 `;
 
 const NavIconsContainer = styled.div`
 	${desktop({ display: "none" })};
 	${tablet({ display: "none" })};
+	padding-right: 1rem;
 `;
 
 const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
@@ -122,15 +119,29 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 	const currentUser = useSelector((state) => state.user.currentUser);
 
 	const [expand, setExpand] = useState(false);
-	const [expandSub, setExpandSub] = useState(false);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const toggleExpand = useCallback(() => {
 		setExpand(!expand);
 	}, [expand]);
 
-	const toggleSubMenu = useCallback(() => {
-		setExpandSub((prevState) => !prevState);
-	}, []);
+	const handleLogout = () => {
+		dispatch(logout());
+		navigate("/");
+	};
+
+	const cartStyle = {
+		height: "100%",
+		filter: LinkShadow ? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))" : null,
+	};
+
+	const linkStyle = {
+		cursor: "pointer",
+		display: "flex",
+		alignItems: "center",
+		gap: "0.5rem",
+	};
 
 	return (
 		<Container PosAbsolute={PosAbsolute}>
@@ -149,12 +160,22 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 								onClick={toggleExpand}
 								color={LinkColor}
 								shadow={LinkShadow}
+								style={{
+									filter: LinkShadow
+										? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))"
+										: null,
+								}}
 							/>
 						) : (
 							<MenuIcon
 								onClick={toggleExpand}
 								color={LinkColor}
 								shadow={LinkShadow}
+								style={{
+									filter: LinkShadow
+										? "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.7))"
+										: null,
+								}}
 							/>
 						)}
 					</NavIconsContainer>
@@ -172,7 +193,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											overlap="rectangular"
 										>
 											<Cart
-												style={{ height: "33.6px", padding: "0px" }}
+												style={cartStyle}
 												htmlColor={LinkColor}
 												shadow={LinkShadow}
 											/>
@@ -181,7 +202,17 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 								</>
 							) : (
 								<>
-									<UserMenu color={LinkColor} shadow={LinkShadow} />
+									<NavLink to={`/${currentUser?.username}/account_overview`}>
+										Account
+									</NavLink>
+
+									<NavLink to="/cart/wishlist">Wishlist</NavLink>
+
+									<NavLink to="/support">Support</NavLink>
+
+									<MenuItem onClick={handleLogout} style={{ color: "red" }}>
+										Logout
+									</MenuItem>
 									<NavLink to="/cart">
 										<Badge
 											badgeContent={quantity}
@@ -189,7 +220,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											overlap="rectangular"
 										>
 											<Cart
-												style={{ height: "33.6px", padding: "0px" }}
+												style={cartStyle}
 												htmlColor={LinkColor}
 												shadow={LinkShadow}
 											/>
@@ -216,7 +247,7 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 											overlap="rectangular"
 										>
 											<Cart
-												style={{ height: "33.6px", padding: "0px" }}
+												style={cartStyle}
 												htmlColor={LinkColor}
 												shadow={LinkShadow}
 											/>
@@ -224,35 +255,14 @@ const Navbar = ({ LinkColor, LinkShadow, PosAbsolute }) => {
 									</NavLink>
 								</>
 							) : (
-								<>
-									<NavLink
-										color={LinkColor}
-										shadow={LinkShadow}
-										onClick={toggleSubMenu}
-									>
-										user logged in, {currentUser.username}
-									</NavLink>
-									<UserMenu
-										color={LinkColor}
-										shadow={LinkShadow}
-										expandSub={expandSub}
-										handleSubMenu={toggleSubMenu}
-										desktop="true"
-									/>
-									<NavLink to="/cart">
-										<Badge
-											badgeContent={quantity}
-											color="primary"
-											overlap="rectangular"
-										>
-											<Cart
-												style={{ height: "33.6px", padding: "0px" }}
-												htmlColor={LinkColor}
-												shadow={LinkShadow}
-											/>
-										</Badge>
-									</NavLink>
-								</>
+								<UserMenu
+									color="primary"
+									shadow={LinkShadow}
+									desktop="true"
+									quantity={quantity}
+									cartStyle={cartStyle}
+									linkStyle={linkStyle}
+								/>
 							)}
 						</NavLinksContainer>
 					)}
