@@ -33,7 +33,6 @@ const Details = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
-	${mobile({ justifyContent: "center", fontSize: "12px" })}
 	gap: 1rem;
 `;
 
@@ -91,7 +90,12 @@ function CartItem({ product }) {
 	return (
 		<Product>
 			<ProductDetail>
-				<Image src={product.img} />
+				<Image
+					src={
+						product.img ||
+						"https://res.cloudinary.com/client-images/image/upload/c_scale,w_360/v1691110086/eCommerce%20Site%20Images/AdobeStock_301378170_inpdne.eps"
+					}
+				/>
 				<Details>
 					<ProductName>
 						<span>Product:</span> {product.title}
