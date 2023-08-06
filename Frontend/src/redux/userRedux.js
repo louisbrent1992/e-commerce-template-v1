@@ -13,6 +13,23 @@ const userSlice = createSlice({
 	},
 	// The reducers for the slice are defined here
 	reducers: {
+		updateUserStart: (state) => {
+			state.isFetching = true;
+		},
+		updateUserSuccess: (state, action) => {
+			state.isFetching = false;
+			state.currentUser = action.payload;
+			state.error = false;
+		},
+		updateUserFailure: (state) => {
+			state.isFetching = false;
+			state.error = true;
+		},
+		resetUser: (state) => {
+			state.currentUser = null;
+			state.isFetching = false;
+			state.error = false;
+		},
 		// When a loginStart action is dispatched, isFetching is set to true to indicate the start of a login attempt
 		loginStart: (state) => {
 			state.isFetching = true;
@@ -22,11 +39,13 @@ const userSlice = createSlice({
 			state.isFetching = false;
 			state.currentUser = action.payload;
 			state.error = false;
+			state.message = "Login Success!";
 		},
 		// When a loginFailure action is dispatched, isFetching is set to false and the error flag is set to true to indicate a login failure
 		loginFailure: (state) => {
 			state.isFetching = false;
 			state.error = true;
+			state.message = "Wrong username or password. Please try again.";
 		},
 		// Similar actions for registration process
 		registerStart: (state) => {
@@ -36,10 +55,12 @@ const userSlice = createSlice({
 			state.isFetching = false;
 			state.currentUser = action.payload;
 			state.error = false;
+			state.message = "Registration Successful!";
 		},
 		registerFailure: (state) => {
 			state.isFetching = false;
 			state.error = true;
+			state.message = "Registration Failed. Please try again.";
 		},
 		logout: (state) => {
 			state.isFetching = false;
@@ -51,6 +72,9 @@ const userSlice = createSlice({
 
 // We export the action creators for this slice of the state for use in other parts of the application
 export const {
+	updateUserStart,
+	updateUserSuccess,
+	updateUserFailure,
 	loginStart,
 	loginSuccess,
 	loginFailure,
@@ -58,6 +82,7 @@ export const {
 	registerSuccess,
 	registerFailure,
 	logout,
+	resetUser,
 } = userSlice.actions;
 // We also export the reducer function for this slice of the state
 export default userSlice.reducer;
