@@ -1,7 +1,7 @@
 export const sliderItems = [
 	{
 		id: 1,
-		img: "/images/background-image-4.jpg",
+		img: "https://res.cloudinary.com/client-images/image/upload/f_auto/q_auto:good/v1690335900/eCommerce%20Site%20Images/background-slide-1.png",
 		title: "SPRING SALE",
 		desc: "Spring into Savings: Enjoy 30% Off on Our Refreshing Collection for a Limited Time!",
 		descMobile: "Spring into Savings!",
@@ -9,7 +9,7 @@ export const sliderItems = [
 	},
 	{
 		id: 2,
-		img: "/images/background-image-4.png",
+		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,e_auto_color,q_auto:good,w_1456/v1690337104/eCommerce%20Site%20Images/background-slide-7.png",
 		title: "OUTERWEAR COLLECTION",
 		desc: "Elevate Your Style: Wrap Yourself in Glamour with Our Stunning Outerwear Collection",
 		descMobile: "Elevate Your Style!",
@@ -17,7 +17,7 @@ export const sliderItems = [
 	},
 	{
 		id: 3,
-		img: "/images/background-image-3.jpg",
+		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:good,w_1456/v1690338835/eCommerce%20Site%20Images/thekitchenista_happy_young_african-american_friends_enjoying_co_f89fabe8-a339-420b-9133-6827e12bc1f7_bzkoyc.png",
 		title: "LOUNGEWEAR LOVE",
 		desc: "Unwind in Style: Discover the Perfect Lounge Wear for Ultimate Comfort",
 		descMobile: "Unwind in Style!",
@@ -28,22 +28,22 @@ export const sliderItems = [
 export const categories = [
 	{
 		id: 1,
-		img: "/images/cat-image-1.png",
-		bg: "/images/womens-image-2.jpg",
+		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:best,w_600/v1690337104/eCommerce%20Site%20Images/categories-image-1.png",
+		bg: "https://res.cloudinary.com/client-images/image/upload/q_auto:good/v1690335824/eCommerce%20Site%20Images/background-slide-4.png",
 		title: "SHIRT STYLE!",
 		cat: "women",
 	},
 	{
 		id: 2,
-		img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-		bg: "/images/lounge-image-1.png",
+		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:best,w_600/v1690340919/eCommerce%20Site%20Images/pexels-photo-2983464_vnlife.jpg",
+		bg: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:good,w_1456/v1690341930/eCommerce%20Site%20Images/Geivcko_Happy_afro_american_woman_relaxing_on_the_sofa_at_home__0b2d5c07-5d99-430a-ba88-962111af758f_t8sguo.png",
 		title: "LOUNGEWEAR LOVE",
 		cat: "lounge",
 	},
 	{
 		id: 3,
-		img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-		bg: "/images/jeans-image-1.jpg",
+		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:best,w_600/v1690340959/eCommerce%20Site%20Images/pexels-photo-5480696_lrvq13.jpg",
+		bg: "https://res.cloudinary.com/client-images/image/upload/q_auto:good/v1690335824/eCommerce%20Site%20Images/background-slide-3.png",
 		title: "LIGHT JACKETS",
 		cat: "coat",
 	},
