@@ -44,7 +44,7 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
 	display: flex;
-	margin-left: 1rem;
+	padding-top: 20px;
 `;
 
 const SocialIcon = styled.a`
