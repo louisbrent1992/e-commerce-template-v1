@@ -67,8 +67,8 @@ const Center = styled.div`
 	justify-content: start;
 	align-items: start;
 	flex-direction: column;
-	${mobile({ borderBlock: "0.1px solid #bcbcbc" })}
-	${tablet({ borderInline: "0.1px solid #bcbcbc" })}
+	${mobile({ borderBlock: "0.1px solid #bcbcbc", width: "100%" })}
+	${tablet({ borderInline: "0.1px solid #bcbcbc", width: "100%" })}
 `;
 
 const Title = styled.h1`
@@ -102,6 +102,7 @@ const ContentWrapper = styled.div`
 const ContactContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+
 	gap: 1rem;
 `;
 
