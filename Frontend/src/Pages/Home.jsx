@@ -11,7 +11,7 @@ const Container = styled.div``;
 
 const Home = () => {
 	return (
-		<Container>
+		<Container className="container">
 			<Navbar PosAbsolute="true" LinkColor="white" LinkShadow="true" />
 			<Slider />
 			<Categories />

@@ -12,18 +12,17 @@ import Checkout from "./Pages/Checkout";
 import ScrollPos from "./Components/ScrollPos";
 import AccountOverview from "./Pages/Account";
 import Support from "./Pages/Support";
-
 const theme = {
-	primary: "#665a4e",
-	secondary: "#caa789",
-	tertiary: "#252322",
-	accent: "#ffffff",
-	extra: "#231006",
-	lighterPrimary: "#8b7765",
-	darkerSecondary: "#9f8d6a",
-	complementary: "#7b9caa",
-	neutralGray: "#bcbcbc",
-	brightAccent: "#e6b800",
+	primary: "#665a4e", // Used for paragraph text
+	secondary: "#caa789", // Not explicitly used in the CSS but can be applied as needed
+	tertiary: "#252322", // Main text color for the body
+	accent: "#ffffff", // Text color for buttons
+	extra: "#231006", // Main color for headers
+	lighterPrimary: "#8b7765", // Softer version of the primary color, not explicitly used
+	darkerSecondary: "#9f8d6a", // Used in the button hover state
+	complementary: "#7b9caa", // Color for anchor links
+	neutralGray: "#bcbcbc", // Neutral gray, can be used for borders or background shades
+	brightAccent: "#e6b800", // Background color for buttons
 };
 
 const App = () => {

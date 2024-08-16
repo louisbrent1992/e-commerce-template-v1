@@ -15,13 +15,14 @@ import { useSelector } from "react-redux";
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding-inline: 20px;
-	height: 100vh;
+	gap: 10px;
+	margin-block: 20px;
 `;
 
 const Wrapper = styled.div`
 	display: flex;
-
+	border: 0.1px solid #bcbcbc;
+	padding-block: 10px;
 	align-items: start;
 	${mobile({ flexDirection: "column" })}
 `;
@@ -31,10 +32,10 @@ const Left = styled.div`
 	padding-inline: 20px;
 	display: flex;
 	flex-direction: column;
-	height: 90vh;
 `;
 
 const Logo = styled.h1`
+	margin-top: 10px;
 	text-align: left;
 `;
 
@@ -44,7 +45,6 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
 	display: flex;
-	padding-top: 20px;
 `;
 
 const SocialIcon = styled.a`
@@ -73,6 +73,7 @@ const Center = styled.div`
 
 const Title = styled.h1`
 	width: 100%;
+	margin-top: 10px;
 	margin-bottom: 30px;
 	text-align: left;
 `;
@@ -134,8 +135,9 @@ const Link = styled.a`
 const Bottom = styled.div`
 	width: 100%;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	padding-top: 10px;
+	align-items: flex-end;
+	justify-content: space-around;
 
 	${mobile({ justifyContent: "center" })}
 `;

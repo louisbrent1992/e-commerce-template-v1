@@ -1,15 +1,15 @@
 export const sliderItems = [
 	{
 		id: 1,
-		img: "https://res.cloudinary.com/client-images/image/upload/f_auto/q_auto:good/v1690335900/eCommerce%20Site%20Images/background-slide-1.png",
+		img: "https://via.placeholder.com/1920x600",
 		title: "SPRING SALE",
 		desc: "Spring into Savings: Enjoy 30% Off on Our Refreshing Collection for a Limited Time!",
 		descMobile: "Spring into Savings!",
-		color: "#e6b800",
+		color: "white",
 	},
 	{
 		id: 2,
-		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,e_auto_color,q_auto:good,w_1456/v1690337104/eCommerce%20Site%20Images/background-slide-7.png",
+		img: "https://via.placeholder.com/1920x600",
 		title: "OUTERWEAR COLLECTION",
 		desc: "Elevate Your Style: Wrap Yourself in Glamour with Our Stunning Outerwear Collection",
 		descMobile: "Elevate Your Style!",
@@ -17,11 +17,11 @@ export const sliderItems = [
 	},
 	{
 		id: 3,
-		img: "https://res.cloudinary.com/client-images/image/upload/c_scale,q_auto:good,w_1456/v1690338835/eCommerce%20Site%20Images/thekitchenista_happy_young_african-american_friends_enjoying_co_f89fabe8-a339-420b-9133-6827e12bc1f7_bzkoyc.png",
+		img: "https://via.placeholder.com/1920x600",
 		title: "LOUNGEWEAR LOVE",
 		desc: "Unwind in Style: Discover the Perfect Lounge Wear for Ultimate Comfort",
 		descMobile: "Unwind in Style!",
-		color: "#e6b800",
+		color: "white",
 	},
 ];
 

@@ -43,6 +43,7 @@ const Right = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+	padding-right: 1rem;
 	gap: 1rem;
 `;
 

@@ -4,11 +4,16 @@ import { mobile } from "../responsive";
 import CategoryItem from "./CategoryItem";
 
 const Container = styled.div`
-	display: flex;
+	display: grid;
+	width: 100%;
 	overflow: hidden;
-	padding-block: 10px;
-	justify-content: center;
-	${mobile({ padding: "0px", flexDirection: "column" })}
+	gap: 10px;
+	padding: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+	@media (min-width: 630px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 `;
 
 const Categories = () => {

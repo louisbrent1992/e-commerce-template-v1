@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
-	height: 60vh;
+	min-height: 280px;
 	background-color: ${(props) => props.theme.secondary};
 	display: flex;
 	align-items: center;

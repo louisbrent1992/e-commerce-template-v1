@@ -118,7 +118,7 @@ const Login = () => {
 
 	return (
 		<Container>
-			<Logo href="/">{"GR\u221EW"}</Logo>
+			<Logo href="/">RE-DESIGN</Logo>
 			<Wrapper>
 				<Title>LOGIN</Title>
 				<Form>

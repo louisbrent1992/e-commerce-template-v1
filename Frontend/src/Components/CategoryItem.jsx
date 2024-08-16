@@ -3,18 +3,16 @@ import styled from "styled-components";
 import { mobile, tablet } from "../responsive";
 
 const Container = styled.div`
-	flex: 1;
-	height: 70vh;
+	max-width: 100%;
 	position: relative;
-	margin: 7px;
-	${tablet({ padding: "0px", flex: null, flexWrap: "wrap" })}
+	padding-block: 10px;
+	min-height: 360px;
 `;
 
 const Image = styled.img`
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	${mobile({ height: "30vh" })}
 `;
 
 const Info = styled.div`
