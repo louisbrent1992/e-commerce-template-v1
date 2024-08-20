@@ -116,7 +116,9 @@ const Cart = () => {
 			<Wrapper>
 				<Title>YOUR BAG</Title>
 				<Top viewWishlist={viewWishlist}>
-					<TopButton onClick={() => navigate(-1)}>CONTINUE SHOPPING</TopButton>
+					<TopButton onClick={() => navigate(-1)} type="filled">
+						CONTINUE SHOPPING
+					</TopButton>
 					<TopTexts>
 						<TopText onClick={() => setViewWishlist(false)}>
 							Shopping Bag({cart.products.length})
